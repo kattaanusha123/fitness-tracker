@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Fitness Tracker</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      padding: 50px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: auto;
+      padding: 25px;
+      border-radius: 12px;
+      background: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      color: #333;
+      animation: slideIn 1s ease-in-out;
+    }
+
+    h2 {
+      color: #1e3c72;
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 2px solid #1e3c72;
+      border-radius: 6px;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #2a5298;
+      transform: scale(1.02);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #163260, #214b8c);
+      transform: scale(1.05);
+    }
+
+    p {
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: #1e3c72;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #2a5298;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Register for Fitness Tracker</h2>
+    <form id="register-form">
+      <input type="text" id="reg-username" placeholder="Choose Username" required>
+      <input type="email" id="reg-email" placeholder="Enter Email" required>
+      <input type="tel" id="reg-phone" placeholder="Enter Phone Number" required>
+      <input type="password" id="reg-password" placeholder="Choose Password" required>
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+
+  <script>
+    document.getElementById("register-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      let username = document.getElementById("reg-username").value;
+      let email = document.getElementById("reg-email").value;
+      let phone = document.getElementById("reg-phone").value;
+      let password = document.getElementById("reg-password").value;
+
+      let user = { username, email, phone, password };
+      localStorage.setItem("user", JSON.stringify(user));
+
+      alert("🎉 Registration successful! You can now log in.");
+      window.location.href = "login.html";
+    });
+  </script>
+
+</body>
+</html>
